@@ -75,20 +75,24 @@ function menu(){
             break;
         case 2:
             console.log('------------------------------------------------------');
-            let nombre2 = prompt('Ingrese el nombre de la persona a buscar');
-            let cont = 0;
-            for(let i = 0; i < datosT.length; i++){
-                if(datosT[i].nombre == nombre2){
-                    console.log('Nombre: ' + datosT[i].nombre + '\n' + 
-                                'Apellido: ' + datosT[i].apellido + '\n' +
-                                'Fecha de nacimiento: ' + datosT[i].fecha + '\n' +
-                                'Telefono: ' + datosT[i].telefono + '\n' +
-                                'Correo: ' + datosT[i].nombre + '\n');
-                    ++cont;
+            if(datosT.length != 0){
+                let nombre2 = prompt('Ingrese el nombre de la persona a buscar');
+                let cont = 0;
+                for(let i = 0; i < datosT.length; i++){
+                    if(datosT[i].nombre == nombre2){
+                        console.log('Nombre: ' + datosT[i].nombre + '\n' + 
+                                    'Apellido: ' + datosT[i].apellido + '\n' +
+                                    'Fecha de nacimiento: ' + datosT[i].fecha + '\n' +
+                                    'Telefono: ' + datosT[i].telefono + '\n' +
+                                    'Correo: ' + datosT[i].nombre + '\n');
+                        ++cont;
+                    }
                 }
-            }
-            if(cont == 0){
-                console.log('No se encontraron resultados!!');
+                if(cont == 0){
+                    console.log('No se encontraron resultados!!');
+                }
+            } else{
+                console.log('No tiene datos!!');
             }
             console.log('------------------------------------------------------');
             menu();
@@ -96,7 +100,9 @@ function menu(){
         case 3:
             console.log('------------------------------------------------------');
             mostrarDatos();
-            let mod = prompt('Seleccione el numeral de la persona a modificar');
+            if(datosT.length != 0){
+                var mod = prompt('Seleccione el numeral de la persona a modificar');
+            }
             if(datosT.length >= mod){
                 modificarDato((mod-1));
                 console.log('Modificado!!!');
@@ -109,7 +115,9 @@ function menu(){
         case 4:
             console.log('------------------------------------------------------');
             mostrarDatos();
-            let pers = parseInt(prompt('Indique el numero de la persona a eliminar'));
+            if(datosT.length != 0){
+                var pers = parseInt(prompt('Indique el numero de la persona a eliminar'));
+            }
             if(datosT.length >= pers){
                 datosT = eliminarDato(datosT, (pers-1));
                 console.log('Eliminado!!!');
