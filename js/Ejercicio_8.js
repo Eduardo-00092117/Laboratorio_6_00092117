@@ -9,7 +9,7 @@ function validacion(mat){
 }
 
 function sumarMatriz(mat1, mat2){
-    if(validacion(mat1) && validacion(mat2)){
+    if(validacion(mat1) && validacion(mat2) && mat1.length == mat2.length){
         var matrizSuma = new Array(mat1.length);
         for(let i = 0; i < 3; i++){
             matrizSuma[i] = new Array(mat1.length);
